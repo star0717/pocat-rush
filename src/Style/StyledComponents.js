@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 export const WholeWrapper = styled.div`
@@ -151,4 +152,9 @@ export const GameStartButton = styled.button`
   margin-right: 100px;
   justify-content: flex-end;
   cursor: pointer;
+`;
+
+export const StyledLink = styled(Link)`
+  color: ${(props) => props.color || `#fff`};
+  text-decoration: none;
 `;

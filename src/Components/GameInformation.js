@@ -1,4 +1,10 @@
-import { PocatRushButton, Text, Wrapper } from "../Style/StyledComponents";
+import { Link, Navigate } from "react-router-dom";
+import {
+  PocatRushButton,
+  StyledLink,
+  Text,
+  Wrapper,
+} from "../Style/StyledComponents";
 
 function GameInformation() {
   return (
@@ -19,7 +25,9 @@ function GameInformation() {
               푸짐한 포인트 선물을 드립니다!
             </Text>
           </Wrapper>
-          <PocatRushButton>게임정보 바로가기</PocatRushButton>
+          <PocatRushButton>
+            <StyledLink to={"./FirstTest"}>게임정보 바로가기</StyledLink>
+          </PocatRushButton>
         </Wrapper>
         <Wrapper width={`auto`}>
           <Wrapper dr={`column`} width={`auto`} margin={`0 20px`} al={`center`}>
