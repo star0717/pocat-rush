@@ -40,6 +40,7 @@ export const Text = styled.p`
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};
   color: ${(props) => props.color};
+  color: ${(props) => (props.isDark ? `#fff` : ``)};
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
   background-color: ${(props) => props.bgColor};
@@ -73,6 +74,7 @@ export const HeaderText = styled.p`
   font-size: ${(props) => (props.isSmall ? `14px` : `16px`)};
   font-weight: ${(props) => props.fontWeight};
   color: ${(props) => props.color};
+  color: ${(props) => props.$color};
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding || `10px 32px`};
   cursor: pointer;
@@ -155,6 +157,27 @@ export const GameStartButton = styled.button`
 `;
 
 export const StyledLink = styled(Link)`
-  color: ${(props) => props.color || `#fff`};
+  color: ${(props) => props.color || `#000`};
   text-decoration: none;
+`;
+
+// sub pages
+
+export const SubPageTitleWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  height: 300px;
+  flex-wrap: wrap;
+  margin: 0;
+  margin-top: 160px;
+  transition: 0.3s;
+  background-color: #242424;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SubPageTitle = styled.h1`
+  font-size: 32px;
+  font-weight: 800;
 `;

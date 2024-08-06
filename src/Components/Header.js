@@ -1,4 +1,9 @@
-import { Wrapper, Text, HeaderText } from "../Style/StyledComponents";
+import {
+  Wrapper,
+  Text,
+  HeaderText,
+  StyledLink,
+} from "../Style/StyledComponents";
 
 function Header() {
   return (
@@ -14,10 +19,18 @@ function Header() {
           </HeaderText>
         </Wrapper>
         <Wrapper ju={`center`}>
-          <HeaderText padding={`10px 74px`}>What's New</HeaderText>
-          <HeaderText padding={`10px 74px`}>랭킹</HeaderText>
-          <HeaderText padding={`10px 74px`}>커뮤니티</HeaderText>
-          <HeaderText padding={`10px 74px`}>마이페이지</HeaderText>
+          <HeaderText padding={`10px 74px`}>
+            <StyledLink to={"/WhatsNew"}>What's New</StyledLink>
+          </HeaderText>
+          <HeaderText padding={`10px 74px`}>
+            <StyledLink to={"/Ranking"}>랭킹</StyledLink>
+          </HeaderText>
+          <HeaderText padding={`10px 74px`}>
+            <StyledLink to={"/Community"}>커뮤니티</StyledLink>
+          </HeaderText>
+          <HeaderText padding={`10px 74px`}>
+            <StyledLink to={"/MyPage"}>마이페이지</StyledLink>
+          </HeaderText>
         </Wrapper>
       </Wrapper>
     </>
