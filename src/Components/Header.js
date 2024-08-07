@@ -5,11 +5,13 @@ import {
   StyledLink,
 } from "../Style/StyledComponents";
 
-function Header() {
+function Header(color) {
   return (
     <>
       <Wrapper isAbsolute zIndex={`100`} ju={`center`}>
-        <Text padding={`20px 0 0`}>Pocat Rush</Text>
+        <Text padding={`20px 0 0`}>
+          <StyledLink to={"/"}>Pocat Rush</StyledLink>
+        </Text>
         <Wrapper ju={`flex-end`} padding={`10px 74px`}>
           <HeaderText padding={`10px 32px`} isSmall>
             로그인
