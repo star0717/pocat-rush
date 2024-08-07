@@ -14,9 +14,11 @@ function WhatsNew() {
           <SubPageTitle>What's New</SubPageTitle>
         </SubPageTitleWrapper>
       </Wrapper>
-      {/* <Wrapper bgColor={`#000`} margin={`500px 0 0`}>
-        dlkfsl
-      </Wrapper> */}
+      <Wrapper
+        width={`200px`}
+        height={`60px`}
+        border={`1px solid #000`}
+      ></Wrapper>
     </>
   );
 }
