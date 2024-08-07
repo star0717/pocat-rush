@@ -7,12 +7,14 @@ export const WholeWrapper = styled.div`
 export const Wrapper = styled.div`
   width: ${(props) => props.width || `100%`};
   min-width: ${(props) => props.minWidth};
+  max-width: ${(props) => props.maxWidth};
   height: ${(props) => props.height};
   color: ${(props) => props.color};
   display: ${(props) => props.display || `flex`};
   flex-direction: ${(props) => props.dr};
   justify-content: ${(props) => props.ju};
   align-items: ${(props) => props.al};
+  align-content: ${(props) => props.alContent};
   flex-wrap: ${(props) => props.wrap || `wrap`};
   background-color: ${(props) => props.bgColor};
   position: ${(props) => (props.isAbsolute ? `absolute` : ``)};
@@ -175,9 +177,75 @@ export const SubPageTitleWrapper = styled.div`
   color: #fff;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 `;
 
 export const SubPageTitle = styled.h1`
   font-size: 32px;
   font-weight: 800;
+  margin: 0;
+`;
+
+export const SubPageTitleDesc = styled.h3`
+  font-size: 18px;
+  font-weight: 200;
+  margin: 0;
+`;
+
+export const SearchInputWrapper = styled.div`
+  width: 200px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  transition: 0.2s;
+  margin: ${(props) => props.margin || `100px 0 40px`};
+
+  &:nth-child(2) {
+    font-size: 22px;
+  }
+
+  &:focus {
+    border: 1px solid #181818;
+  }
+`;
+
+export const SearchInput = styled.input`
+  width: 168px;
+  height: 36px;
+  border: none;
+  background: none;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const MainTableWrapper = styled.table`
+  width: ${(props) => props.width || ``};
+  max-width: 1440px;
+  display: flex;
+  margin: ${(props) => props.margin || `0 0 100px`};
+  flex-direction: column;
+`;
+
+export const MainTableTr = styled.tr`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: ${(props) =>
+    props.isHead ? `2px solid #181818` : `1px solid #ccc`};
+  padding: 6px 0;
+  cursor: pointer;
+  text-align: center;
+`;
+
+export const MainTableTh = styled.th`
+  width: ${(props) => props.width || ``};
+`;
+
+export const MainTableTd = styled.td`
+  width: ${(props) => props.width || ``};
 `;
