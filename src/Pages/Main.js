@@ -12,6 +12,7 @@ import {
   Text,
   Wrapper,
 } from "../Style/StyledComponents";
+import { sessionCurrent, userLogin } from "../API/api";
 
 function Main() {
   return (
@@ -24,7 +25,8 @@ function Main() {
         al={`flex-end`}
         dr={`column`}
       >
-        <GameStartButton>GAME START</GameStartButton>
+        <GameStartButton onClick={sessionCurrent}>GAME START</GameStartButton>
+        <GameStartButton onClick={userLogin}>GAME START</GameStartButton>
         <Profile />
       </Wrapper>
 
