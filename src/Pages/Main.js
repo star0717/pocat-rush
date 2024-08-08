@@ -12,27 +12,8 @@ import {
   Text,
   Wrapper,
 } from "../Style/StyledComponents";
-import { urlGetAllAuthority } from "../API/api";
-import axios from "axios";
 
 function Main() {
-  const [authority, setAuthority] = useState(null);
-
-  // 0807 승환 api 테스트
-  // async function getAuthority() {
-  //   try {
-  //     let response = await urlGetAllAuthority();
-  //     console.log("데이터 : ", response.data);
-
-  //   } catch (error) {
-  //     console.log("에러 : ", error);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getAuthority();
-  // }, []);
-
   return (
     <>
       <Header />
