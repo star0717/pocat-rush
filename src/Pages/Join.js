@@ -18,7 +18,7 @@ function Join() {
     <>
       <Wrapper>
         <Header />
-        <SubPageTitleWrapper>
+        <SubPageTitleWrapper bgImg={`url("images/subBanner02.png")`}>
           <SubPageTitle>회원가입</SubPageTitle>
           <SubPageTitleDesc>
             지금 바로 회원가입하고 즐거운 포켓러쉬의 세계에 빠져보세요.
