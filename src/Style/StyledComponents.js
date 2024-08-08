@@ -47,7 +47,9 @@ export const Text = styled.p`
   padding: ${(props) => props.padding};
   background-color: ${(props) => props.bgColor};
   text-align: ${(props) => props.textAlign};
+  text-decoration: ${(props) => props.decoration};
   line-height: ${(props) => props.lineHeight};
+  cursor: ${(props) => props.cursor};
 
   &span {
     font-size: ${(props) => props.fontSize};
@@ -68,6 +70,7 @@ export const PocatRushButton = styled.button`
   border-radius: 6px;
   cursor: pointer;
   font-weight: 800;
+  margin: ${(props) => props.margin || ``};
 `;
 
 // Header.js
@@ -130,8 +133,8 @@ export const Select = styled.select`
   color: #fff;
   text-align: center;
 
-  &focus {
-    border: none;
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -248,4 +251,44 @@ export const MainTableTh = styled.th`
 
 export const MainTableTd = styled.td`
   width: ${(props) => props.width || ``};
+`;
+
+// join.js
+
+export const JoinInputWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const JoinText = styled.p`
+  text-align: left;
+  font-weight: 800;
+  padding-right: 8px;
+`;
+
+export const JoinInput = styled.input`
+  width: ${(props) => props.width || `400px`};
+  height: 40px;
+  border: 1px solid #000;
+  border-radius: 40px;
+  padding: 0 8px;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const JoinSelect = styled.select`
+  width: ${(props) => props.width || `418px`};
+  height: 42px;
+  border: 1px solid #000;
+  border-radius: 40px;
+  padding: 0 8px;
+
+  &:focus {
+    outline: none;
+  }
 `;

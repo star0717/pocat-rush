@@ -6,6 +6,10 @@ import Main from "./Pages/Main";
 import WhatsNew from "./Pages/WhatsNew";
 import Ranking from "./Pages/Ranking";
 import Community from "./Pages/Community";
+import Join from "./Pages/Join";
+import Login from "./Pages/Login";
+import FindAccess from "./Pages/FindAccess";
+import MyPage from "./Pages/MyPage";
 
 function App() {
   return (
@@ -18,6 +22,10 @@ function App() {
           <Route path="/whatsnew" element={<WhatsNew />} />
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/community" element={<Community />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/join" element={<Join />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/findaccess" element={<FindAccess />} />
         </Routes>
       </BrowserRouter>
     </>

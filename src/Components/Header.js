@@ -14,10 +14,10 @@ function Header(color) {
         </Text>
         <Wrapper ju={`flex-end`} padding={`10px 74px`}>
           <HeaderText padding={`10px 32px`} isSmall>
-            로그인
+            <StyledLink to={"/Login"}>로그인</StyledLink>
           </HeaderText>
           <HeaderText padding={`10px 32px`} isSmall>
-            회원가입
+            <StyledLink to={"/Join"}>회원가입</StyledLink>
           </HeaderText>
         </Wrapper>
         <Wrapper ju={`center`}>

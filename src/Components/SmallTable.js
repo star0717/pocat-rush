@@ -5,26 +5,27 @@ import {
   SmallTableTd,
   SmallTableTr,
   SmallTableWrapper,
+  StyledLink,
   Text,
   Wrapper,
 } from "../Style/StyledComponents";
 
 function SmallTable() {
-  const [user, setUser] = useState("");
-  async function getAllUser() {
-    try {
-      let response = await urlGetAllUser();
-      console.log("데이터 : ", response.data);
-      setUser(response.data);
-      console.log("user :", user);
-    } catch (error) {
-      console.log("에러 : ", error);
-    }
-  }
+  // const [user, setUser] = useState("");
+  // async function getAllUser() {
+  //   try {
+  //     let response = await urlGetAllUser();
+  //     console.log("데이터 : ", response.data);
+  //     setUser(response.data);
+  //     console.log("user :", user);
+  //   } catch (error) {
+  //     console.log("에러 : ", error);
+  //   }
+  // }
 
-  useEffect(() => {
-    getAllUser();
-  }, []);
+  // useEffect(() => {
+  //   getAllUser();
+  // }, []);
 
   return (
     <Wrapper>
@@ -35,19 +36,21 @@ function SmallTable() {
               <Text fontSize={`22px`} fontWeight={`800`}>
                 What's New
               </Text>
-              <SmallTablePlusButton>+</SmallTablePlusButton>
+              <StyledLink to={"/WhatsNew"}>
+                <SmallTablePlusButton>+</SmallTablePlusButton>
+              </StyledLink>
             </Wrapper>
             <Text fontSize={`14px`}>포켓러쉬의 새 소식을 확인해보세요</Text>
           </Wrapper>
           <SmallTableWrapper>
-            {user &&
+            {/* {user &&
               user.map((u) => (
                 <SmallTableTr>
                   <SmallTableTd>{u.userId}</SmallTableTd>
                   <SmallTableTd>{u.createDate}</SmallTableTd>
                   <SmallTableTd>{u.email}</SmallTableTd>
                 </SmallTableTr>
-              ))}
+              ))} */}
           </SmallTableWrapper>
         </Wrapper>
         <Wrapper dr={`column`} width={`650px`} margin={`20px 70px`}>
@@ -56,7 +59,9 @@ function SmallTable() {
               <Text fontSize={`22px`} fontWeight={`800`}>
                 자유게시판
               </Text>
-              <SmallTablePlusButton>+</SmallTablePlusButton>
+              <StyledLink to={"/Community"}>
+                <SmallTablePlusButton>+</SmallTablePlusButton>
+              </StyledLink>
             </Wrapper>
             <Text fontSize={`14px`}>
               유저들과 자유롭게 이야기를 나누어보세요!
