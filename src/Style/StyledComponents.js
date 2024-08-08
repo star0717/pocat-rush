@@ -25,6 +25,7 @@ export const Wrapper = styled.div`
   right: ${(props) => props.right};
   bottom: ${(props) => props.bottom};
   border: ${(props) => props.border};
+  border-bottom: ${(props) => props.borderBottom};
   border-radius: ${(props) => props.radius};
   box-shadow: ${(props) => props.shadow};
   margin: ${(props) => props.margin || `0`};
@@ -35,6 +36,14 @@ export const Wrapper = styled.div`
   font-weight: ${(props) => props.fontWeight};
   transition: ${(props) => props.transition || `0.3s`};
   background-image: ${(props) => props.bgImg};
+  background: ${(props) => props.background};
+  overflow-x: ${(props) => props.overflow || `hidden`};
+`;
+
+export const Image = styled.img`
+  width: ${(props) => props.width || `100%`};
+  padding: ${(props) => props.padding};
+  margin: ${(props) => props.margin || `0 auto`};
 `;
 
 export const Text = styled.p`
@@ -78,8 +87,7 @@ export const HeaderText = styled.p`
   margin: ${(props) => props.margin || `0`};
   font-size: ${(props) => (props.isSmall ? `14px` : `16px`)};
   font-weight: ${(props) => props.fontWeight};
-  color: ${(props) => props.color};
-  color: ${(props) => props.$color};
+  color: ${(props) => props.color || `#fff`};
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding || `10px 32px`};
   cursor: pointer;
@@ -147,14 +155,14 @@ export const Option = styled.option`
 // main.js
 export const GameStartButton = styled.button`
   width: 200px;
-  background-color: #181818;
+  background-color: darkslateblue;
   color: #fff;
   height: 60px;
-  border-radius: 6px;
+  border-radius: 6px 6px 0 0;
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 600;
   border: 0;
   margin-right: 100px;
   justify-content: flex-end;
@@ -162,7 +170,8 @@ export const GameStartButton = styled.button`
 `;
 
 export const StyledLink = styled(Link)`
-  color: ${(props) => props.color || `#000`};
+  /* color: ${(props) => props.color || `#000`}; */
+  color: ${(props) => (props.isWhite ? `#fff` : `#000`)};
   text-decoration: none;
 `;
 
@@ -174,13 +183,18 @@ export const SubPageTitleWrapper = styled.div`
   height: 300px;
   flex-wrap: wrap;
   margin: 0;
-  margin-top: 160px;
+  /* margin-top: 160px; */
   transition: 0.3s;
-  background-color: #242424;
-  color: #fff;
+  /* background-color: #242424; */
+  color: #242424;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  background-image: ${(props) => props.bgImg};
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 export const SubPageTitle = styled.h1`
@@ -191,7 +205,7 @@ export const SubPageTitle = styled.h1`
 
 export const SubPageTitleDesc = styled.h3`
   font-size: 18px;
-  font-weight: 200;
+  font-weight: 400;
   margin: 0;
 `;
 

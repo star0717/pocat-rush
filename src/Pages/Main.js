@@ -6,6 +6,7 @@ import Profile from "../Components/Profile";
 import SmallTable from "../Components/SmallTable";
 import {
   GameStartButton,
+  Image,
   SmallTableTd,
   SmallTableTr,
   SmallTableWrapper,
@@ -17,15 +18,12 @@ function Main() {
   return (
     <>
       <Header />
-      <Wrapper
-        height={`100vh`}
-        bgColor={`#ccc`}
-        ju={`center`}
-        al={`flex-end`}
-        dr={`column`}
-      >
-        <GameStartButton>GAME START</GameStartButton>
-        <Profile />
+      <Wrapper ju={`center`} al={`flex-end`} dr={`column`}>
+        <Image src="/images/testBanner.png" />
+        <Wrapper dr={`column`} al={`flex-end`} isAbsolute top={`32%`}>
+          <GameStartButton>GAME START</GameStartButton>
+          <Profile />
+        </Wrapper>
       </Wrapper>
 
       <SmallTable />

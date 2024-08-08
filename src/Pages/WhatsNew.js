@@ -18,7 +18,7 @@ function WhatsNew() {
     <>
       <Wrapper>
         <Header />
-        <SubPageTitleWrapper>
+        <SubPageTitleWrapper bgImg={`url("images/subBanner01.png")`}>
           <SubPageTitle>What's New</SubPageTitle>
           <SubPageTitleDesc>
             포켓러쉬의 새로운 소식을 확인할 수 있습니다.

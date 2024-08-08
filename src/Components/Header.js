@@ -3,35 +3,54 @@ import {
   Text,
   HeaderText,
   StyledLink,
+  Image,
 } from "../Style/StyledComponents";
 
-function Header(color) {
+function Header() {
   return (
     <>
-      <Wrapper isAbsolute zIndex={`100`} ju={`center`}>
-        <Text padding={`20px 0 0`}>
-          <StyledLink to={"/"}>Pocat Rush</StyledLink>
-        </Text>
-        <Wrapper ju={`flex-end`} padding={`10px 74px`}>
-          <HeaderText padding={`10px 32px`} isSmall>
+      <Wrapper
+        // isAbsolute
+        // zIndex={`100`}
+        ju={`center`}
+        // bgColor={` rgb(255,255,255,0.6);`}
+        bgColor={`#fff`}
+      >
+        <StyledLink to={"/"}>
+          <Image
+            src="/images/pocatLogo.png"
+            width={`180px`}
+            padding={`14px 0 0`}
+          />
+        </StyledLink>
+        <Wrapper ju={`flex-end`} padding={`0px 74px 10px`}>
+          <HeaderText padding={`0px 32px`} isSmall>
             <StyledLink to={"/Login"}>로그인</StyledLink>
           </HeaderText>
-          <HeaderText padding={`10px 32px`} isSmall>
+          <HeaderText padding={`0px 32px`} isSmall>
             <StyledLink to={"/Join"}>회원가입</StyledLink>
           </HeaderText>
         </Wrapper>
-        <Wrapper ju={`center`}>
-          <HeaderText padding={`10px 74px`}>
-            <StyledLink to={"/WhatsNew"}>What's New</StyledLink>
+        <Wrapper ju={`center`} bgColor={`#242424`}>
+          <HeaderText padding={`14px 74px`}>
+            <StyledLink isWhite to={"/WhatsNew"}>
+              What's New
+            </StyledLink>
           </HeaderText>
-          <HeaderText padding={`10px 74px`}>
-            <StyledLink to={"/Ranking"}>랭킹</StyledLink>
+          <HeaderText padding={`14px 74px`}>
+            <StyledLink isWhite to={"/Ranking"}>
+              랭킹
+            </StyledLink>
           </HeaderText>
-          <HeaderText padding={`10px 74px`}>
-            <StyledLink to={"/Community"}>커뮤니티</StyledLink>
+          <HeaderText padding={`14px 74px`}>
+            <StyledLink isWhite to={"/Community"}>
+              커뮤니티
+            </StyledLink>
           </HeaderText>
-          <HeaderText padding={`10px 74px`}>
-            <StyledLink to={"/MyPage"}>마이페이지</StyledLink>
+          <HeaderText padding={`14px 74px`}>
+            <StyledLink isWhite to={"/MyPage"}>
+              마이페이지
+            </StyledLink>
           </HeaderText>
         </Wrapper>
       </Wrapper>
