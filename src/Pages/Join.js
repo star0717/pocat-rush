@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import {
@@ -12,8 +13,28 @@ import {
   SubPageTitleWrapper,
   Wrapper,
 } from "../Style/StyledComponents";
+import { userSignUp } from "../API/api";
 
 function Join() {
+  // 0809 승환 회원가입 추가
+  const [inputSignUpId, setInputSignUpId] = useState("");
+  const [inputSignUpPassword, setInputSignUpPassword] = useState("");
+  const [inputSignName, setInputSignUpName] = useState("");
+  const [inputSignUpEmail, setInputSignUpEmail] = useState("");
+  const [inputSignUpSelectEmail, setInputSignUpSelectEmail] = useState("");
+  const [inputSignUpGender, setInputSignUpGender] = useState("");
+
+  const signUpData = {
+    userId: `${inputSignUpId}`,
+    password: `${inputSignUpPassword}`,
+    userName: `${inputSignName}`,
+    userEmail: `${inputSignUpEmail}` + "@" + `${inputSignUpSelectEmail}`,
+    gender: `${inputSignUpGender}`,
+  };
+  useEffect(() => {
+    console.log("signUpData :", signUpData);
+  }, [signUpData]);
+
   return (
     <>
       <Wrapper>
@@ -27,20 +48,32 @@ function Join() {
         <Wrapper dr={`column`} al={`center`} padding={`140px 0`}>
           <JoinInputWrapper>
             <JoinText>아이디</JoinText>
-            <JoinInput placeholder="아이디를 입력해주세요" />
+            <JoinInput
+              placeholder="아이디를 입력해주세요"
+              value={inputSignUpId}
+              onChange={(e) => setInputSignUpId(e.target.value)}
+            />
           </JoinInputWrapper>
           <JoinInputWrapper>
             <JoinText>비밀번호</JoinText>
-            <JoinInput placeholder="비밀번호를 입력해주세요" />
+            <JoinInput
+              placeholder="비밀번호를 입력해주세요"
+              value={inputSignUpPassword}
+              onChange={(e) => setInputSignUpPassword(e.target.value)}
+            />
           </JoinInputWrapper>
           <JoinInputWrapper>
             <JoinText>이름</JoinText>
-            <JoinInput placeholder="이름을 입력해주세요" />
+            <JoinInput
+              placeholder="이름을 입력해주세요"
+              value={inputSignName}
+              onChange={(e) => setInputSignUpName(e.target.value)}
+            />
           </JoinInputWrapper>
           <JoinInputWrapper>
             <JoinText>성별</JoinText>
-            <JoinSelect>
-              <Option>선택안함</Option>
+            <JoinSelect onChange={(e) => setInputSignUpGender(e.target.value)}>
+              <Option value={null}>선택안함</Option>
               <Option>여성</Option>
               <Option>남성</Option>
             </JoinSelect>
@@ -48,9 +81,18 @@ function Join() {
           <JoinInputWrapper>
             <JoinText>이메일</JoinText>
             <Wrapper ju={`space-between`} width={`auto`} minWidth={`418px`}>
-              <JoinInput placeholder="이메일을 입력해주세요" width={`188px`} />
-              <JoinSelect width={`198px`}>
-                <Option>선택안함</Option>
+              <JoinInput
+                placeholder="이메일을 입력해주세요"
+                width={`188px`}
+                value={inputSignUpEmail}
+                onChange={(e) => setInputSignUpEmail(e.target.value)}
+              />
+              <JoinSelect
+                width={`198px`}
+                value={inputSignUpSelectEmail}
+                onChange={(e) => setInputSignUpSelectEmail(e.target.value)}
+              >
+                <Option value={null}>선택안함</Option>
                 <Option>gmail.com</Option>
                 <Option>naver.com</Option>
                 <Option>nate.com</Option>
@@ -59,7 +101,12 @@ function Join() {
               </JoinSelect>
             </Wrapper>
           </JoinInputWrapper>
-          <PocatRushButton margin={`40px 0 0`}>다음</PocatRushButton>
+          <PocatRushButton
+            onClick={() => userSignUp(signUpData)}
+            margin={`40px 0 0`}
+          >
+            다음
+          </PocatRushButton>
         </Wrapper>
         <Footer />
       </Wrapper>

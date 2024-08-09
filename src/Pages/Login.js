@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import {
@@ -14,8 +15,23 @@ import {
   Text,
   Wrapper,
 } from "../Style/StyledComponents";
+import { sessionCurrent, userJwtLogin } from "../API/api";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Login() {
+  // 0809 승환 로그인 추가
+  const [inputId, setInputId] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
+  const loginData = {
+    userId: `${inputId}`,
+    password: `${inputPassword}`,
+  };
+
+  // 로그인 체크
+  useEffect(() => {
+    sessionCurrent();
+  }, []);
+
   return (
     <>
       <Wrapper>
@@ -29,11 +45,19 @@ function Login() {
         <Wrapper dr={`column`} al={`center`} padding={`140px 0`}>
           <JoinInputWrapper>
             <JoinText>아이디</JoinText>
-            <JoinInput placeholder="아이디를 입력해주세요" />
+            <JoinInput
+              placeholder="아이디를 입력해주세요"
+              value={inputId}
+              onChange={(e) => setInputId(e.target.value)}
+            />
           </JoinInputWrapper>
           <JoinInputWrapper>
             <JoinText>비밀번호</JoinText>
-            <JoinInput placeholder="비밀번호를 입력해주세요" />
+            <JoinInput
+              placeholder="비밀번호를 입력해주세요"
+              value={inputPassword}
+              onChange={(e) => setInputPassword(e.target.value)}
+            />
           </JoinInputWrapper>
           <Wrapper
             minWidth={`500px`}
@@ -51,7 +75,14 @@ function Login() {
               </Text>
             </StyledLink>
           </Wrapper>
-          <PocatRushButton margin={`40px 0 0`}>로그인하기</PocatRushButton>
+          <PocatRushButton
+            onClick={() => {
+              userJwtLogin(loginData);
+            }}
+            margin={`40px 0 0`}
+          >
+            로그인하기
+          </PocatRushButton>
         </Wrapper>
         <Footer />
       </Wrapper>
