@@ -15,20 +15,35 @@ import {
   Text,
   Wrapper,
 } from "../Style/StyledComponents";
-import { sessionCurrent, userJwtLogin } from "../API/api";
-import { Navigate, useNavigate } from "react-router-dom";
+import { sessionCurrent, urlJwtLogin } from "../API/api";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  // 0809 승환 로그인 추가
+  // 0809 승환 로그인기능 추가
   const [inputId, setInputId] = useState("");
   const [inputPassword, setInputPassword] = useState("");
+  const navigate = useNavigate();
   const loginData = {
     userId: `${inputId}`,
     password: `${inputPassword}`,
   };
 
-  // 로그인 체크
+  async function getToken() {
+    let tokenData = localStorage.getItem("JWT-token");
+    if (!tokenData) {
+      try {
+        let response = await urlJwtLogin(loginData);
+        console.log("데이터 : ", response.data);
+        localStorage.setItem("JWT-token", response.data.data.token);
+        // 성공시 이전 페이지로 이동
+        navigate(-1);
+      } catch (error) {
+        console.log("에러 : ", error.response.data.data);
+      }
+    }
+  }
   useEffect(() => {
+    // 로그인 체크
     sessionCurrent();
   }, []);
 
@@ -77,7 +92,7 @@ function Login() {
           </Wrapper>
           <PocatRushButton
             onClick={() => {
-              userJwtLogin(loginData);
+              getToken(loginData);
             }}
             margin={`40px 0 0`}
           >

@@ -13,10 +13,10 @@ import {
   SubPageTitleWrapper,
   Wrapper,
 } from "../Style/StyledComponents";
-import { userSignUp } from "../API/api";
+import { urlUserSignUp } from "../API/api";
 
 function Join() {
-  // 0809 승환 회원가입 추가
+  // 0808 승환 회원가입기능 추가
   const [inputSignUpId, setInputSignUpId] = useState("");
   const [inputSignUpPassword, setInputSignUpPassword] = useState("");
   const [inputSignName, setInputSignUpName] = useState("");
@@ -31,9 +31,20 @@ function Join() {
     userEmail: `${inputSignUpEmail}` + "@" + `${inputSignUpSelectEmail}`,
     gender: `${inputSignUpGender}`,
   };
-  useEffect(() => {
-    console.log("signUpData :", signUpData);
-  }, [signUpData]);
+
+  async function signUp(signUpData) {
+    if (window.confirm("회원가입 하시겠습니까?")) {
+      try {
+        let response = await urlUserSignUp(signUpData);
+        console.log("데이터 : ", response.data);
+        // 이동 코드
+        window.location.href = "http://localhost:3000/";
+      } catch (error) {
+        console.log("에러 : ", error.response.data.data);
+      }
+    }
+  }
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -102,7 +113,7 @@ function Join() {
             </Wrapper>
           </JoinInputWrapper>
           <PocatRushButton
-            onClick={() => userSignUp(signUpData)}
+            onClick={() => signUp(signUpData)}
             margin={`40px 0 0`}
           >
             다음

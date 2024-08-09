@@ -13,17 +13,8 @@ import {
   Text,
   Wrapper,
 } from "../Style/StyledComponents";
-import {
-  sessionCurrent,
-  userJwtLogin,
-  userLogin,
-  userLogout,
-} from "../API/api";
 
 function Main() {
-  useEffect(() => {
-    sessionCurrent();
-  }, []);
   return (
     <>
       <Header />
@@ -34,7 +25,6 @@ function Main() {
           <Profile />
         </Wrapper>
       </Wrapper>
-
       <SmallTable />
       <GameInformation />
       <Footer />
