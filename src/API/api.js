@@ -31,6 +31,7 @@ export function sessionCurrent() {
         let response = await urlSessionCurrent(header);
 
         console.log("데이터 : ", response.data);
+        
       } catch (error) {
         console.log("에러 : ", error);
       }

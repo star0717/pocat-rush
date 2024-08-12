@@ -4,7 +4,6 @@ function GameIntro() {
   return (
     <>
       <Image src="/images/GameIntro.png" />
-      ?????????????
     </>
   );
 }

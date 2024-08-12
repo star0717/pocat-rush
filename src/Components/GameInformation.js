@@ -26,7 +26,7 @@ function GameInformation() {
             </Text>
           </Wrapper>
           <PocatRushButton>
-            <StyledLink to={"/FirstTest"} isWhite>
+            <StyledLink to={"/Join"} isWhite>
               게임정보 바로가기
             </StyledLink>
           </PocatRushButton>
