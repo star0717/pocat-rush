@@ -53,22 +53,22 @@ function Header() {
         </Wrapper>
         <Wrapper ju={`center`} bgColor={`#242424`}>
           <HeaderText padding={`14px 74px`}>
-            <StyledLink isWhite to={"/WhatsNew"}>
+            <StyledLink isWhite to={"/WhatsNew"} isHeader>
               What's New
             </StyledLink>
           </HeaderText>
           <HeaderText padding={`14px 74px`}>
-            <StyledLink isWhite to={"/Ranking"}>
+            <StyledLink isWhite to={"/Ranking"} isHeader>
               랭킹
             </StyledLink>
           </HeaderText>
           <HeaderText padding={`14px 74px`}>
-            <StyledLink isWhite to={"/Community"}>
+            <StyledLink isWhite to={"/Community"} isHeader>
               커뮤니티
             </StyledLink>
           </HeaderText>
           <HeaderText padding={`14px 74px`}>
-            <StyledLink isWhite to={"/MyPage"}>
+            <StyledLink isWhite to={"/MyPage"} isHeader>
               마이페이지
             </StyledLink>
           </HeaderText>

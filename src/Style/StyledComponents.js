@@ -189,6 +189,12 @@ export const GameStartButton = styled.button`
 export const StyledLink = styled(Link)`
   /* color: ${(props) => props.color || `#000`}; */
   color: ${(props) => (props.isWhite ? `#fff` : `#000`)};
+
+  transition: 0.2s;
+
+  &:hover {
+    color: ${(props) => (props.isHeader ? `#52dcff` : ``)};
+  }
   text-decoration: none;
 `;
 
