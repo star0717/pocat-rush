@@ -1,4 +1,5 @@
-import { userLogout } from "../API/api";
+import { useEffect, useState } from "react";
+import { urlSessionCurrent, userLogout } from "../API/api";
 import {
   Wrapper,
   Text,
@@ -10,8 +11,46 @@ import {
 import { IoIosLogOut } from "react-icons/io";
 
 function Header() {
-  let isLogin = localStorage.getItem("JWT-token");
+  const [adminData, setAdminData] = useState(null);
+  let token = localStorage.getItem("JWT-token");
+  let header = {
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
+  async function currentCheck() {
+    if (token) {
+      try {
+        let response = await urlSessionCurrent(header);
+        if (response.data.data.authority[0].authority == "ROLE_ADMIN") {
+          console.log(
+            "현재 로그인 계정 : ",
+            response.data.data.authority[0].authority
+          );
+          setAdminData(
+            <HeaderText padding={`14px 74px`}>
+              <StyledLink isWhite to={"/Admin"} isHeader>
+                관리자가깅
+              </StyledLink>
+            </HeaderText>
+          );
+        } else {
+          console.log(
+            "현재 로그인 계정 : ",
+            response.data.data.authority[0].authority
+          );
+        }
+      } catch (error) {
+        console.log("에러 : ", error);
+      }
+    }
+  }
+
+  useEffect(() => {
+    currentCheck();
+  }, []);
   return (
     <>
       <Wrapper
@@ -30,7 +69,7 @@ function Header() {
         </StyledLink>
         <Wrapper ju={`flex-end`} padding={`0px 74px 10px`}>
           {/* 0809 승환 로그아웃 추가 (로그인이 되어있다면 hidden속성 추가 요망) */}
-          {!isLogin ? (
+          {!token ? (
             <>
               <HeaderText padding={`0px 32px`} isSmall>
                 <StyledLink to={"/Login"}>로그인</StyledLink>
@@ -72,6 +111,7 @@ function Header() {
               마이페이지
             </StyledLink>
           </HeaderText>
+          {adminData}
         </Wrapper>
       </Wrapper>
     </>

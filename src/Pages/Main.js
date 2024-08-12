@@ -28,7 +28,7 @@ function Main() {
       </Wrapper>
       <SmallTable />
       <GameInformation />
-      <StyledLink to={"/Admin"}>관리자가깅</StyledLink>
+
       <Footer />
     </>
   );

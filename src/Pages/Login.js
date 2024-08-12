@@ -42,10 +42,7 @@ function Login() {
       }
     }
   }
-  useEffect(() => {
-    // 로그인 체크
-    sessionCurrent();
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -72,6 +69,7 @@ function Login() {
               placeholder="비밀번호를 입력해주세요"
               value={inputPassword}
               onChange={(e) => setInputPassword(e.target.value)}
+              type="password"
             />
           </JoinInputWrapper>
           <Wrapper
