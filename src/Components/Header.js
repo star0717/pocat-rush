@@ -8,6 +8,8 @@ import {
 } from "../Style/StyledComponents";
 
 function Header() {
+  let isLogin = localStorage.getItem("JWT-token");
+
   return (
     <>
       <Wrapper
@@ -26,10 +28,17 @@ function Header() {
         </StyledLink>
         <Wrapper ju={`flex-end`} padding={`0px 74px 10px`}>
           {/* 0809 승환 로그아웃 추가 (로그인이 되어있다면 hidden속성 추가 요망) */}
-          <HeaderText padding={`0px 32px`} isSmall>
-            <StyledLink to={"/Login"}>로그인</StyledLink>
-          </HeaderText>
-          <HeaderText padding={`0px 32px`} isSmall>
+          {!isLogin ? (
+            <>
+              <HeaderText padding={`0px 32px`} isSmall>
+                <StyledLink to={"/Login"}>로그인</StyledLink>
+              </HeaderText>
+              <HeaderText padding={`0px 32px`} isSmall></HeaderText>
+              <HeaderText padding={`0px 32px`} isSmall>
+                <StyledLink to={"/Join"}>회원가입</StyledLink>
+              </HeaderText>
+            </>
+          ) : (
             <StyledLink
               onClick={() => {
                 userLogout();
@@ -37,10 +46,7 @@ function Header() {
             >
               로그아웃
             </StyledLink>
-          </HeaderText>
-          <HeaderText padding={`0px 32px`} isSmall>
-            <StyledLink to={"/Join"}>회원가입</StyledLink>
-          </HeaderText>
+          )}
         </Wrapper>
         <Wrapper ju={`center`} bgColor={`#242424`}>
           <HeaderText padding={`14px 74px`}>
