@@ -10,6 +10,8 @@ import Join from "./Pages/Join";
 import Login from "./Pages/Login";
 import FindAccess from "./Pages/FindAccess";
 import MyPage from "./Pages/MyPage";
+import GameIntro from "./Pages/GameIntro";
+import Admin from "./Pages/Admin";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/join" element={<Join />} />
           <Route path="/login" element={<Login />} />
           <Route path="/findaccess" element={<FindAccess />} />
+          <Route path="/gameintro" element={<GameIntro />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>
     </>

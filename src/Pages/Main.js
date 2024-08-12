@@ -10,6 +10,7 @@ import {
   SmallTableTd,
   SmallTableTr,
   SmallTableWrapper,
+  StyledLink,
   Text,
   Wrapper,
 } from "../Style/StyledComponents";
@@ -27,6 +28,7 @@ function Main() {
       </Wrapper>
       <SmallTable />
       <GameInformation />
+      <StyledLink to={"/Admin"}>관리자가깅</StyledLink>
       <Footer />
     </>
   );

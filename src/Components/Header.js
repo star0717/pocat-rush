@@ -7,6 +7,8 @@ import {
   Image,
 } from "../Style/StyledComponents";
 
+import { IoIosLogOut } from "react-icons/io";
+
 function Header() {
   let isLogin = localStorage.getItem("JWT-token");
 
@@ -45,6 +47,7 @@ function Header() {
               }}
             >
               로그아웃
+              <IoIosLogOut />
             </StyledLink>
           )}
         </Wrapper>

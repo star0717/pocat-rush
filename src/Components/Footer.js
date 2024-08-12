@@ -47,9 +47,11 @@ function Footer() {
             }}
           >
             <Option value={""}>About Us</Option>
-            <Option value={"https://yeoeo.tistory.com/1"}>Yuk SeungHwan</Option>
-            <Option value={"https://yeoeo.tistory.com/1"}>Yoon Byeol</Option>
-            <Option value={"https://yeoeo.tistory.com/1"}>Song JinKyung</Option>
+            <Option value={"https://github.com/SeungHwanYuk"}>
+              Yuk SeungHwan
+            </Option>
+            <Option value={"https://github.com/star0717"}>Yoon Byeol</Option>
+            <Option value={"https://github.com/bobo459"}>Song JinKyung</Option>
           </Select>
         </Form>
         <Text color={`#fff`} margin={`10px 0 0 `}>

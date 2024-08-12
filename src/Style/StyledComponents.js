@@ -42,6 +42,7 @@ export const Wrapper = styled.div`
 
 export const Image = styled.img`
   width: ${(props) => props.width || `100%`};
+  max-width: ${(props) => props.maxWidth || ``};
   padding: ${(props) => props.padding};
   margin: ${(props) => props.margin || `0 auto`};
 `;
@@ -80,6 +81,11 @@ export const PocatRushButton = styled.button`
   cursor: pointer;
   font-weight: 800;
   margin: ${(props) => props.margin || ``};
+  transition: 0.2s;
+
+  &:hover {
+    background-color: #4a4a4a;
+  }
 `;
 
 // Header.js
@@ -112,6 +118,11 @@ export const SmallTableTr = styled.tr`
     props.isHead ? `2px solid #181818` : `1px solid #ccc`};
   padding: 6px 0;
   cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
 `;
 
 export const SmallTableTh = styled.th``;
@@ -126,7 +137,13 @@ export const SmallTablePlusButton = styled.button`
   cursor: pointer;
   border: 1px solid #878787;
   color: #878787;
+  transition: 0.2s;
   font-size: 20px;
+
+  &:hover {
+    background-color: #242424;
+    color: #fff;
+  }
 `;
 
 // -----------------------------------------------------
@@ -256,7 +273,12 @@ export const MainTableTr = styled.tr`
     props.isHead ? `2px solid #181818` : `1px solid #ccc`};
   padding: 6px 0;
   cursor: pointer;
+  transition: 0.2s;
   text-align: center;
+
+  &:hover {
+    background-color: ${(props) => (props.isHead ? `#fff` : `#f2f2f2`)};
+  }
 `;
 
 export const MainTableTh = styled.th`
@@ -305,4 +327,15 @@ export const JoinSelect = styled.select`
   &:focus {
     outline: none;
   }
+`;
+
+// 관리자
+
+export const AdminButton = styled.button`
+  width: 100px;
+  height: 40px;
+  background-color: #242424;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
 `;

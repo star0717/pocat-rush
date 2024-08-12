@@ -1,9 +1,15 @@
-import { Image } from "../Style/StyledComponents";
+import Footer from "../Components/Footer";
+import Header from "../Components/Header";
+import { Image, Wrapper } from "../Style/StyledComponents";
 
 function GameIntro() {
   return (
     <>
-      <Image src="/images/GameIntro.png" />
+      <Header />
+      <Wrapper padding={`120px 0`}>
+        <Image src="/images/GameIntro.png" maxWidth={`800px`} />
+      </Wrapper>
+      <Footer />
     </>
   );
 }
