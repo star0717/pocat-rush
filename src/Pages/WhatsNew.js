@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { urlPostWhatsNew } from "../API/api";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import {
@@ -14,6 +16,21 @@ import {
 import { HiSearch } from "react-icons/hi";
 
 function WhatsNew() {
+  const [data, setData] = useState(null);
+
+  async function whatsNews() {
+    try {
+      let response = await urlPostWhatsNew();
+      console.log("데이터 : ", response.data);
+      setData(response.data);
+    } catch (error) {
+      console.log("에러 : ", error);
+    }
+  }
+  useEffect(() => {
+    whatsNews();
+  }, []);
+
   return (
     <>
       <Wrapper>
@@ -39,12 +56,15 @@ function WhatsNew() {
             <MainTableTd width={`15%`}>작성자</MainTableTd>
             <MainTableTd width={`20%`}>작성일</MainTableTd>
           </MainTableTr>
-          <MainTableTr>
-            <MainTableTd width={`15%`}>1</MainTableTd>
-            <MainTableTd width={`50%`}>Hello I'm Title</MainTableTd>
-            <MainTableTd width={`15%`}>Unknown</MainTableTd>
-            <MainTableTd width={`20%`}>2024-08-07</MainTableTd>
-          </MainTableTr>
+          {data &&
+            data.map((data) => (
+              <MainTableTr>
+                <MainTableTd width={`15%`}>{data.postId}</MainTableTd>
+                <MainTableTd width={`50%`}>{data.postTitle}</MainTableTd>
+                <MainTableTd width={`15%`}>{data.user.userId}</MainTableTd>
+                <MainTableTd width={`20%`}>{data.postDate}</MainTableTd>
+              </MainTableTr>
+            ))}
         </MainTableWrapper>
       </Wrapper>
       <Footer />

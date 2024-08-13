@@ -17,6 +17,13 @@ export function urlJwtLogin(loginData) {
   return axios.post("http://localhost:8080/api/authenticate", loginData);
 }
 
+export function urlPostFreeBoard() {
+  return axios.get("http://localhost:8080/api/post/freeboard");
+}
+export function urlPostWhatsNew() {
+  return axios.get("http://localhost:8080/api/post/whatsnew");
+}
+
 // 0808 승환 현재로그인상태 테스트
 // export function sessionCurrent() {
 //   let data;
