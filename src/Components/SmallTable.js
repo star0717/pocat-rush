@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { urlGetAllAuthority, urlGetAllUser } from "../API/api";
+
 import {
   SmallTablePlusButton,
   SmallTableTd,
@@ -9,23 +9,27 @@ import {
   Text,
   Wrapper,
 } from "../Style/StyledComponents";
+import { urlPostFreeBoard, urlPostWhatsNew } from "../API/api";
 
 function SmallTable() {
-  // const [user, setUser] = useState("");
-  // async function getAllUser() {
-  //   try {
-  //     let response = await urlGetAllUser();
-  //     console.log("데이터 : ", response.data);
-  //     setUser(response.data);
-  //     console.log("user :", user);
-  //   } catch (error) {
-  //     console.log("에러 : ", error);
-  //   }
-  // }
+  const [whatsNewData, setWhatsNewData] = useState(null);
+  const [freeBoardData, setFreeBoardData] = useState(null);
+  async function getSmallTableData() {
+    try {
+      let responseWhatsNew = await urlPostWhatsNew();
+      let responseFreeBoard = await urlPostFreeBoard();
+      // console.log("responseWhatsNew : ", responseWhatsNew.data);
+      // console.log("responseFreeBoard : ", responseFreeBoard.data);
+      setWhatsNewData(responseWhatsNew.data);
+      setFreeBoardData(responseFreeBoard.data);
+    } catch (error) {
+      console.log("에러 : ", error);
+    }
+  }
 
-  // useEffect(() => {
-  //   getAllUser();
-  // }, []);
+  useEffect(() => {
+    getSmallTableData();
+  }, []);
 
   return (
     <Wrapper>
@@ -43,14 +47,14 @@ function SmallTable() {
             <Text fontSize={`14px`}>포켓러쉬의 새 소식을 확인해보세요</Text>
           </Wrapper>
           <SmallTableWrapper>
-            {/* {user &&
-              user.map((u) => (
+            {whatsNewData &&
+              // 결과 갯수 제한 slice(시작 , 끝 index)
+              whatsNewData.slice(0, 4).map((w) => (
                 <SmallTableTr>
-                  <SmallTableTd>{u.userId}</SmallTableTd>
-                  <SmallTableTd>{u.createDate}</SmallTableTd>
-                  <SmallTableTd>{u.email}</SmallTableTd>
+                  <SmallTableTd>{w.postTitle}</SmallTableTd>
+                  <SmallTableTd>{w.postDate}</SmallTableTd>
                 </SmallTableTr>
-              ))} */}
+              ))}
           </SmallTableWrapper>
         </Wrapper>
         <Wrapper dr={`column`} width={`650px`} margin={`20px 70px`}>
@@ -68,18 +72,14 @@ function SmallTable() {
             </Text>
           </Wrapper>
           <SmallTableWrapper>
-            <SmallTableTr>
-              <SmallTableTd>I'm Title01</SmallTableTd>
-              <SmallTableTd>2024-08-06</SmallTableTd>
-            </SmallTableTr>
-            <SmallTableTr>
-              <SmallTableTd>I'm Title02</SmallTableTd>
-              <SmallTableTd>2024-08-06</SmallTableTd>
-            </SmallTableTr>
-            <SmallTableTr>
-              <SmallTableTd>I'm Title03</SmallTableTd>
-              <SmallTableTd>2024-08-06</SmallTableTd>
-            </SmallTableTr>
+            {freeBoardData &&
+              // 결과 갯수 제한 slice(시작 , 끝 index)
+              freeBoardData.slice(0, 4).map((f) => (
+                <SmallTableTr>
+                  <SmallTableTd>{f.postTitle}</SmallTableTd>
+                  <SmallTableTd>{f.postDate}</SmallTableTd>
+                </SmallTableTr>
+              ))}
           </SmallTableWrapper>
         </Wrapper>
       </Wrapper>

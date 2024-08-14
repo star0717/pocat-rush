@@ -37,10 +37,7 @@ function Header() {
             </HeaderText>
           );
         } else {
-          console.log(
-            "현재 로그인 계정 : ",
-            response.data.data.authority[0].authority
-          );
+          console.log("현재 로그인 계정 : ", response.data.data);
         }
       } catch (error) {
         console.log("에러 : ", error);
