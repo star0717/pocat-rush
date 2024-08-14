@@ -14,6 +14,7 @@ import GameIntro from "./Pages/GameIntro";
 import Admin from "./Pages/Admin";
 import BoardWrapper from "./Pages/BoardWrapper";
 import Post from "./Pages/Post";
+import PostWrite from "./Pages/PostWrite";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route index element={<Community />} />
             <Route path=":postId" element={<Post />} />
           </Route>
+          <Route path="/postwrite" element={<PostWrite />} />
 
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/join" element={<Join />} />

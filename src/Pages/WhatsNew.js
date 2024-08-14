@@ -81,7 +81,10 @@ function WhatsNew() {
           </MainTableTr>
           {data &&
             data.map((data) => (
-              <MainTableTr>
+              <MainTableTr
+                key={data.postId}
+                onClick={() => navigate(`/community/${data.postId}`)}
+              >
                 <MainTableTd width={`15%`}>{data.postId}</MainTableTd>
                 <MainTableTd width={`50%`}>{data.postTitle}</MainTableTd>
                 <MainTableTd width={`15%`}>{data.user.userId}</MainTableTd>

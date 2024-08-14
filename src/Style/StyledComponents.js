@@ -346,3 +346,12 @@ export const AdminButton = styled.button`
   border: none;
 `;
 
+
+
+//글쓰기 - 진경
+export const PostWriteWrapper = styled.p`
+`;
+export const PostWriteText = styled.p`
+`;
+export const PostWriteInput = styled.p`
+`;

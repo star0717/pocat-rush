@@ -94,7 +94,7 @@ function Community() {
               </MainTableTr>
             ))}
         </MainTableWrapper>
-        <button>글쓰기</button>
+        <button onClick={() => navigate(`/postwrite`)}>글쓰기</button>
       </Wrapper>
       <Footer />
     </>
