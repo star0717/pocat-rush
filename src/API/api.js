@@ -24,6 +24,14 @@ export function urlPostWhatsNew() {
   return axios.get("http://localhost:8080/api/post/whatsnew");
 }
 
+export function urlGetPost(postId) {
+  return axios.get(`http://localhost:8080/api/post/${postId}`);
+}
+
+export function urlGetPostByText(text) {
+  return axios.get(`http://localhost:8080/api/post/search/${text}`);
+}
+
 // 0808 승환 현재로그인상태 테스트
 // export function sessionCurrent() {
 //   let data;

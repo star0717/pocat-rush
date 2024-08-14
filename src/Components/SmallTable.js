@@ -10,10 +10,12 @@ import {
   Wrapper,
 } from "../Style/StyledComponents";
 import { urlPostFreeBoard, urlPostWhatsNew } from "../API/api";
+import { useNavigate } from "react-router-dom";
 
 function SmallTable() {
   const [whatsNewData, setWhatsNewData] = useState(null);
   const [freeBoardData, setFreeBoardData] = useState(null);
+  const navigate = useNavigate();
   async function getSmallTableData() {
     try {
       let responseWhatsNew = await urlPostWhatsNew();
@@ -50,7 +52,10 @@ function SmallTable() {
             {whatsNewData &&
               // 결과 갯수 제한 slice(시작 , 끝 index)
               whatsNewData.slice(0, 4).map((w) => (
-                <SmallTableTr>
+                <SmallTableTr
+                  key={w.postId}
+                  onClick={() => navigate(`/community/${w.postId}`)}
+                >
                   <SmallTableTd>{w.postTitle}</SmallTableTd>
                   <SmallTableTd>{w.postDate}</SmallTableTd>
                 </SmallTableTr>
@@ -75,7 +80,10 @@ function SmallTable() {
             {freeBoardData &&
               // 결과 갯수 제한 slice(시작 , 끝 index)
               freeBoardData.slice(0, 4).map((f) => (
-                <SmallTableTr>
+                <SmallTableTr
+                  key={f.postId}
+                  onClick={() => navigate(`/community/${f.postId}`)}
+                >
                   <SmallTableTd>{f.postTitle}</SmallTableTd>
                   <SmallTableTd>{f.postDate}</SmallTableTd>
                 </SmallTableTr>

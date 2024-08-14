@@ -12,6 +12,8 @@ import FindAccess from "./Pages/FindAccess";
 import MyPage from "./Pages/MyPage";
 import GameIntro from "./Pages/GameIntro";
 import Admin from "./Pages/Admin";
+import BoardWrapper from "./Pages/BoardWrapper";
+import Post from "./Pages/Post";
 
 function App() {
   return (
@@ -23,7 +25,12 @@ function App() {
           <Route path="/test" element={<FirstTest />} />
           <Route path="/whatsnew" element={<WhatsNew />} />
           <Route path="/ranking" element={<Ranking />} />
-          <Route path="/community" element={<Community />} />
+
+          <Route path="/community" element={<BoardWrapper />}>
+            <Route index element={<Community />} />
+            <Route path=":postId" element={<Post />} />
+          </Route>
+
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/join" element={<Join />} />
           <Route path="/login" element={<Login />} />

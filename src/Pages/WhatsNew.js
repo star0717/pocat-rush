@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { urlPostWhatsNew } from "../API/api";
+import { urlGetPostByText, urlPostWhatsNew } from "../API/api";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import {
@@ -14,15 +14,34 @@ import {
   Wrapper,
 } from "../Style/StyledComponents";
 import { HiSearch } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 function WhatsNew() {
   const [data, setData] = useState(null);
+  const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
   async function whatsNews() {
     try {
       let response = await urlPostWhatsNew();
       console.log("데이터 : ", response.data);
       setData(response.data);
+    } catch (error) {
+      console.log("에러 : ", error);
+    }
+  }
+
+  async function getWhatsNewByText() {
+    // 검색란이 비어있을 경우 기본게시판으로 돌아감
+    if (!searchText) {
+      whatsNews();
+      return;
+    }
+    try {
+      const whatsNewId = "2";
+      let response = await urlGetPostByText(searchText);
+      console.log("데이터 : ", response.data);
+      setData(response.data.filter((r) => r.board.boardId == whatsNewId));
     } catch (error) {
       console.log("에러 : ", error);
     }
@@ -45,8 +64,12 @@ function WhatsNew() {
       <Wrapper alContent={`center`} dr={`column`}>
         <Wrapper ju={`flex-end`} maxWidth={`1440px`}>
           <SearchInputWrapper>
-            <SearchInput placeholder="검색어를 입력해주세요." />
-            <HiSearch />
+            <SearchInput
+              placeholder="검색어를 입력해주세요."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+            <HiSearch onClick={getWhatsNewByText} />
           </SearchInputWrapper>
         </Wrapper>
         <MainTableWrapper>

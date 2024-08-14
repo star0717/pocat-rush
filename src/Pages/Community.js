@@ -12,11 +12,15 @@ import {
   Wrapper,
 } from "../Style/StyledComponents";
 import Footer from "../Components/Footer";
-import { urlPostFreeBoard } from "../API/api";
+import { urlGetPostByText, urlPostFreeBoard } from "../API/api";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
 function Community() {
   const [data, setData] = useState(null);
+  const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
   async function freeBoard() {
     try {
@@ -24,7 +28,22 @@ function Community() {
       console.log("데이터 : ", response.data);
 
       setData(response.data);
+    } catch (error) {
+      console.log("에러 : ", error);
+    }
+  }
 
+  async function getPostByText() {
+    // 검색란이 비어있을 경우 기본게시판으로 돌아감
+    if (!searchText) {
+      freeBoard();
+      return;
+    }
+    try {
+      const freeBoardId = "1";
+      let response = await urlGetPostByText(searchText);
+      console.log("데이터 : ", response.data);
+      setData(response.data.filter((r) => r.board.boardId == freeBoardId));
     } catch (error) {
       console.log("에러 : ", error);
     }
@@ -47,8 +66,12 @@ function Community() {
       <Wrapper alContent={`center`} dr={`column`}>
         <Wrapper ju={`flex-end`} maxWidth={`1440px`}>
           <SearchInputWrapper>
-            <SearchInput placeholder="검색어를 입력해주세요." />
-            <HiSearch />
+            <SearchInput
+              placeholder="검색어를 입력해주세요."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+            <HiSearch onClick={getPostByText} />
           </SearchInputWrapper>
         </Wrapper>
         <MainTableWrapper>
@@ -60,7 +83,10 @@ function Community() {
           </MainTableTr>
           {data &&
             data.map((data) => (
-              <MainTableTr>
+              <MainTableTr
+                key={data.postId}
+                onClick={() => navigate(`${data.postId}`)}
+              >
                 <MainTableTd width={`15%`}>{data.postId}</MainTableTd>
                 <MainTableTd width={`50%`}>{data.postTitle}</MainTableTd>
                 <MainTableTd width={`15%`}>{data.user.userId}</MainTableTd>
@@ -68,6 +94,7 @@ function Community() {
               </MainTableTr>
             ))}
         </MainTableWrapper>
+        <button>글쓰기</button>
       </Wrapper>
       <Footer />
     </>
