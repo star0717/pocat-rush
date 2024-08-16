@@ -93,8 +93,8 @@ function Community() {
                 <MainTableTd width={`20%`}>{data.postDate}</MainTableTd>
               </MainTableTr>
             ))}
+          <button onClick={() => navigate(`/postwrite`)}>글쓰기</button>
         </MainTableWrapper>
-        <button onClick={() => navigate(`/postwrite`)}>글쓰기</button>
       </Wrapper>
       <Footer />
     </>

@@ -346,12 +346,42 @@ export const AdminButton = styled.button`
   border: none;
 `;
 
-
-
 //글쓰기 - 진경
-export const PostWriteWrapper = styled.p`
+export const PostWriteWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+  justify-content: space-between;
+  align-items: center;
 `;
+
 export const PostWriteText = styled.p`
+  text-align: left;
+  font-weight: 800;
+  padding-right: 8px;
 `;
-export const PostWriteInput = styled.p`
+
+export const PostWriteInputTitle = styled.input`
+  width: ${(props) => props.width || `400px`};
+
+  height: 40px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 0 8px;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const PostWriteInputText = styled.input`
+  width: ${(props) => props.width || `400px`};
+  height: 400px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 0 8px;
+
+  &:focus {
+    outline: none;
+  }
 `;

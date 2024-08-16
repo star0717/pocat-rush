@@ -37,31 +37,30 @@ export function urlPostWrite(postWrite) {
 }
 
 // 0808 승환 현재로그인상태 테스트
-// export function sessionCurrent() {
-//   let data;
-//   let token = localStorage.getItem("JWT-token");
-//   let header = {
-//     headers: {
-//       accept: "application/json",
-//       Authorization: `Bearer ${token}`,
-//     },
-//   };
-//   async function currentCheck() {
-//     if (token) {
-//       try {
-//         let response = await urlSessionCurrent(header);
 
-//         console.log("현재 로그인 계정 : ", response.data.data);
-//         data = data;
-//       } catch (error) {
-//         console.log("에러 : ", error);
-//       }
-//     }
-//   }
-//   currentCheck();
+export async function tokenCheck() {
+  let tokenData = {};
+  let token = localStorage.getItem("JWT-token");
+  let header = {
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  if (token) {
+    try {
+      let response = await urlSessionCurrent(header);
 
-//   return data;
-// }
+      console.log("urlSessionCurrent : ", response.data.data);
+      tokenData = response.data.data;
+    } catch (error) {
+      console.log("에러 : ", error);
+    }
+  } else {
+    return null;
+  }
+  return tokenData;
+}
 
 // 0809 승환 로그아웃 테스트
 export async function userLogout() {
