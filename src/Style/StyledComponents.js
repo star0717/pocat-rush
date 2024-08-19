@@ -385,3 +385,19 @@ export const PostWriteInputText = styled.input`
     outline: none;
   }
 `;
+
+//게시글
+export const MainPostTableTr = styled.tr`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: ${(props) =>
+    props.isHead ? `2px solid #181818` : `1px solid #ccc`};
+  padding: 6px 0;
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: center;
+`;
+
+export const PostTableTd = styled.td`
+  width: ${(props) => props.width || ``};
+`;

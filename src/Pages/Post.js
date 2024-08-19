@@ -1,9 +1,11 @@
 import { HiSearch } from "react-icons/hi";
 import Header from "../Components/Header";
 import {
+  MainPostTableTr,
   MainTableTd,
   MainTableTr,
   MainTableWrapper,
+  PostTableTd,
   SearchInput,
   SearchInputWrapper,
   SubPageTitle,
@@ -18,6 +20,7 @@ import { useEffect } from "react";
 
 function Post() {
   const { postId } = useParams();
+  const {data}= useParams();
 
   async function getPostByPostId() {
     try {
@@ -44,7 +47,23 @@ function Post() {
       </Wrapper>
       <Wrapper alContent={`center`} dr={`column`}>
         <Wrapper ju={`flex-end`} maxWidth={`1440px`}></Wrapper>
-        <MainTableWrapper></MainTableWrapper>
+        <MainTableWrapper>
+
+
+          <MainPostTableTr>
+            <PostTableTd width={`15%`}>제목</PostTableTd>
+            {/* <PostTableTd width={`15%`}>{data.postTitle}</PostTableTd> */}
+            <PostTableTd width={`15%`}>작성자</PostTableTd>
+            <PostTableTd width={`20%`}>작성일</PostTableTd>
+          </MainPostTableTr>
+
+          <MainPostTableTr>
+            <PostTableTd width={`15%`}>내용</PostTableTd>
+          </MainPostTableTr>
+
+
+
+        </MainTableWrapper>
       </Wrapper>
       <Footer />
     </>
