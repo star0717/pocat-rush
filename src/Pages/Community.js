@@ -4,6 +4,7 @@ import {
   MainTableTd,
   MainTableTr,
   MainTableWrapper,
+  PostWriteButton,
   SearchInput,
   SearchInputWrapper,
   SubPageTitle,
@@ -93,7 +94,9 @@ function Community() {
                 <MainTableTd width={`20%`}>{data.postDate}</MainTableTd>
               </MainTableTr>
             ))}
-          <button onClick={() => navigate(`/postwrite`)}>글쓰기</button>
+          <PostWriteButton onClick={() => navigate(`/postwrite`)}>
+            글쓰기
+          </PostWriteButton>
         </MainTableWrapper>
       </Wrapper>
       <Footer />

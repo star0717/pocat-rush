@@ -434,3 +434,20 @@ export const MainPostTextTableTr = styled.td`
   transition: 0.2s;
   text-align: left;
 `;
+
+//글쓰기 버튼 -진경
+export const PostWriteButton = styled.button`
+  background-color: #c4ddf3;
+  border-style: none;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 10px 10px auto; /* 오른쪽 마진을 auto로 설정 */
+  cursor: pointer;
+  &:hover {
+    background-color: ${(props) => (props.isHead ? `#fff` : `#56a3ee`)};
+    color: #fff;
+  }
+`;
