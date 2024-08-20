@@ -1,11 +1,14 @@
 import { HiSearch } from "react-icons/hi";
 import Header from "../Components/Header";
 import {
+  MainPostTableTitleTr,
   MainPostTableTr,
+  MainPostTextTableTr,
   MainTableTd,
   MainTableTr,
   MainTableWrapper,
   PostTableTd,
+  PostTableTitleTd,
   SearchInput,
   SearchInputWrapper,
   SubPageTitle,
@@ -52,20 +55,25 @@ function Post() {
         <MainTableWrapper>
           {data && (
             <>
+              <MainPostTableTitleTr>
+                {/* <PostTableTitleTd width={`15%`}></PostTableTitleTd> */}
+                <PostTableTitleTd width={`60%`}>
+                  {data.postTitle}
+                </PostTableTitleTd>
+              </MainPostTableTitleTr>
               <MainPostTableTr>
-                <PostTableTd width={`15%`}>제목</PostTableTd>
-                <PostTableTd width={`15%`}>{data.postTitle}</PostTableTd>
-                <PostTableTd width={`15%`}>작성자</PostTableTd>
+                <PostTableTd width={`16%`}>작성자</PostTableTd>
                 <PostTableTd width={`15%`}>{data.user.userId}</PostTableTd>
-                <PostTableTd width={`20%`}>작성일</PostTableTd>
-                <PostTableTd width={`15%`}>{data.postDate}</PostTableTd>
+                <PostTableTd width={`50%`}></PostTableTd>
+                <PostTableTd width={`16%`}>작성일</PostTableTd>
+                <PostTableTd width={`30%`}>{data.postDate}</PostTableTd>
               </MainPostTableTr>
-              <MainPostTableTr>
+              {/* <MainPostTableTr>
                 <PostTableTd width={`15%`}>내용</PostTableTd>
-              </MainPostTableTr>
-              <MainPostTableTr>
-                <PostTableTd width={`100%`}>{data.postText}</PostTableTd>
-              </MainPostTableTr>
+              </MainPostTableTr> */}
+              <MainPostTextTableTr>
+                <PostTableTd width={`80%`}>{data.postText}</PostTableTd>
+              </MainPostTextTableTr>
             </>
           )}
         </MainTableWrapper>

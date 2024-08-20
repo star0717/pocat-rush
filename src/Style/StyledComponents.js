@@ -386,18 +386,51 @@ export const PostWriteInputText = styled.input`
   }
 `;
 
-//게시글
+//게시글 - 진경
 export const MainPostTableTr = styled.tr`
   display: flex;
   justify-content: space-between;
   border-bottom: ${(props) =>
-    props.isHead ? `2px solid #181818` : `1px solid #ccc`};
+    props.isHead ? `2px solid #929292` : `1px solid #ccc`};
   padding: 6px 0;
   cursor: pointer;
   transition: 0.2s;
   text-align: center;
 `;
+export const MainPostTableTitleTr = styled.tr`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: ${(props) =>
+    props.isHead ? `2px solid #929292` : `1px solid #ccc`};
+  border-top: ${(props) =>
+    props.isHead ? `2px solid #181818` : `2px solid #4b4b4b`};
+  padding: 20px 0;
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: left;
+  background-color: #e4e7f0;
+  /* margin: 30px 0 0; */
+`;
 
 export const PostTableTd = styled.td`
   width: ${(props) => props.width || ``};
+  justify-content: space-between;
+  text-align: left;
+  padding: 0 40px;
+`;
+export const PostTableTitleTd = styled.tr`
+  width: ${(props) => props.width || ``};
+  font-size: 30px;
+  font-weight: 500;
+  margin: 0 40px;
+`;
+
+export const MainPostTextTableTr = styled.td`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: ${(props) =>
+    props.isHead ? `2px solid #929292` : `1px solid #ccc`};
+  padding: 20px 0;
+  transition: 0.2s;
+  text-align: left;
 `;
