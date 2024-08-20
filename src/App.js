@@ -13,8 +13,10 @@ import MyPage from "./Pages/MyPage";
 import GameIntro from "./Pages/GameIntro";
 import Admin from "./Pages/Admin";
 import BoardWrapper from "./Pages/BoardWrapper";
-import Post from "./Pages/Post";
+
 import PostWrite from "./Pages/PostWrite";
+
+import Post from "./Pages/Post";
 
 function App() {
   return (

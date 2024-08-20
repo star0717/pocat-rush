@@ -16,16 +16,18 @@ import {
 import Footer from "../Components/Footer";
 import { useParams } from "react-router-dom";
 import { urlGetPost } from "../API/api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Post() {
   const { postId } = useParams();
-  const {data}= useParams();
+  const [data, setData] = useState("");
 
   async function getPostByPostId() {
     try {
       let response = await urlGetPost(postId);
       console.log("urlGetPost : ", response.data);
+
+      setData(response.data);
     } catch (error) {
       console.log("에러발생 : ", error);
     }
@@ -48,21 +50,24 @@ function Post() {
       <Wrapper alContent={`center`} dr={`column`}>
         <Wrapper ju={`flex-end`} maxWidth={`1440px`}></Wrapper>
         <MainTableWrapper>
-
-
-          <MainPostTableTr>
-            <PostTableTd width={`15%`}>제목</PostTableTd>
-            {/* <PostTableTd width={`15%`}>{data.postTitle}</PostTableTd> */}
-            <PostTableTd width={`15%`}>작성자</PostTableTd>
-            <PostTableTd width={`20%`}>작성일</PostTableTd>
-          </MainPostTableTr>
-
-          <MainPostTableTr>
-            <PostTableTd width={`15%`}>내용</PostTableTd>
-          </MainPostTableTr>
-
-
-
+          {data && (
+            <>
+              <MainPostTableTr>
+                <PostTableTd width={`15%`}>제목</PostTableTd>
+                <PostTableTd width={`15%`}>{data.postTitle}</PostTableTd>
+                <PostTableTd width={`15%`}>작성자</PostTableTd>
+                <PostTableTd width={`15%`}>{data.user.userId}</PostTableTd>
+                <PostTableTd width={`20%`}>작성일</PostTableTd>
+                <PostTableTd width={`15%`}>{data.postDate}</PostTableTd>
+              </MainPostTableTr>
+              <MainPostTableTr>
+                <PostTableTd width={`15%`}>내용</PostTableTd>
+              </MainPostTableTr>
+              <MainPostTableTr>
+                <PostTableTd width={`100%`}>{data.postText}</PostTableTd>
+              </MainPostTableTr>
+            </>
+          )}
         </MainTableWrapper>
       </Wrapper>
       <Footer />
